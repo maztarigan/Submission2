@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">Mazmur - Submission 2</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="title_movie">MOVIES</string>
+    <string name="title_tvshow">TV SHOWS</string>
+    <string name="hello_blank_movie">Hello blank movies</string>
+    <string name="hello_blank_tvshow">Hello blank tv shows</string>
+    <string name="movies_name">List Movies</string>
+    <string name="movies_desc">Description</string>
+    <string name="tvshow_name">List Tv Show</string>
+    <string name="tvshow_desc">Description</string>
+    <string name="lorem">lorem ipsum default template</string>
+    <string name="overview">Overview</string>
+    <string name="change_language_settings">Change Language</string>
+</resources>

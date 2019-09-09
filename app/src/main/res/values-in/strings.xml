@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">Mazmur - Ujian Ke 2</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="title_movie">FILM</string>
+    <string name="title_tvshow">ACARA TV</string>
+    <string name="hello_blank_movie">Data Film Kosong</string>
+    <string name="hello_blank_tvshow">Data Acara TV Kosong</string>
+    <string name="movies_name">Daftar Film</string>
+    <string name="movies_desc">Deskripsi Film</string>
+    <string name="tvshow_name">Daftar Acara TV</string>
+    <string name="tvshow_desc">Deskripsi Acara TV</string>
+    <string name="lorem">Template Keterangan</string>
+    <string name="overview">Tinjauan</string>
+    <string name="change_language_settings">Ubah Bahasa</string>
+</resources>
