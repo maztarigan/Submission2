@@ -1,6 +1,5 @@
 package com.tarigan.mazmursubs2.adapter.main;
 
-import android.app.Activity;
 import android.content.Context;
 
 import androidx.fragment.app.Fragment;
@@ -13,10 +12,15 @@ import com.tarigan.mazmursubs2.ui.main.TvShowsFragment;
 
 public class SubmissionAdapter extends FragmentStatePagerAdapter {
 
-    public SubmissionAdapter(FragmentManager fm) {
+
+    public SubmissionAdapter(FragmentManager fm, Context context) {
         super(fm);
 
+        this.context = context;
+
     }
+
+    private Context context;
 
     @Override
     public Fragment getItem(int position) {
@@ -34,11 +38,12 @@ public class SubmissionAdapter extends FragmentStatePagerAdapter {
         return 2;
     }
 
-    private String tabTitles[] = new String[]{String.valueOf(R.string.title_movie), String.valueOf(R.string.title_tvshow)};
-//    private String tabTitles[] = new String[]{"MOVIES", "TV SHOWS"};
+
 
     @Override
     public CharSequence getPageTitle(int position){
+        String tabTitles[] = new String[]{context.getResources().getString(R.string.title_movie),context.getResources().getString(R.string.title_tvshow)};
+
         return tabTitles[position];
     }
 
