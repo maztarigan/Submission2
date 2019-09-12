@@ -1,6 +1,5 @@
 package com.tarigan.mazmursubs2.adapter.main;
 
-import android.app.VoiceInteractor;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.tarigan.mazmursubs2.R;
-import com.tarigan.mazmursubs2.TvShow;
+import com.tarigan.mazmursubs2.model.TvShow;
 
 import java.util.ArrayList;
 

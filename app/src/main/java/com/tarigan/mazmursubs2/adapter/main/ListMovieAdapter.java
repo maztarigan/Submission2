@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
-import com.tarigan.mazmursubs2.Movie;
+import com.tarigan.mazmursubs2.model.Movie;
 import com.tarigan.mazmursubs2.R;
 
 import java.util.ArrayList;

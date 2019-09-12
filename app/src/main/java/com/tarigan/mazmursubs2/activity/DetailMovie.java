@@ -1,4 +1,4 @@
-package com.tarigan.mazmursubs2.ui.main;
+package com.tarigan.mazmursubs2.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,7 +7,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.tarigan.mazmursubs2.Movie;
+import com.tarigan.mazmursubs2.model.Movie;
 import com.tarigan.mazmursubs2.R;
 
 public class DetailMovie extends AppCompatActivity {

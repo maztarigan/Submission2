@@ -1,4 +1,4 @@
-package com.tarigan.mazmursubs2.ui.main;
+package com.tarigan.mazmursubs2.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -13,7 +13,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.google.android.material.tabs.TabLayout;
-import com.tarigan.mazmursubs2.MainActivity;
 import com.tarigan.mazmursubs2.R;
 import com.tarigan.mazmursubs2.adapter.main.SubmissionAdapter;
 

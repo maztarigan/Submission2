@@ -1,4 +1,4 @@
-package com.tarigan.mazmursubs2;
+package com.tarigan.mazmursubs2.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,9 +8,8 @@ import android.provider.Settings;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.tarigan.mazmursubs2.ui.main.MainFragment;
-
-import java.util.Locale;
+import com.tarigan.mazmursubs2.R;
+import com.tarigan.mazmursubs2.fragment.MainFragment;
 
 public class MainActivity extends AppCompatActivity {
     @Override
