@@ -1,4 +1,4 @@
-package com.tarigan.mazmursubs2.adapter.main;
+package com.tarigan.mazmursubs2.Adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.tarigan.mazmursubs2.R;
-import com.tarigan.mazmursubs2.model.TvShow;
+import com.tarigan.mazmursubs2.Model.TvShow;
 
 import java.util.ArrayList;
 

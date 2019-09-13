@@ -1,4 +1,4 @@
-package com.tarigan.mazmursubs2.fragment;
+package com.tarigan.mazmursubs2.View.Fragment;
 
 
 import android.content.Intent;
@@ -15,11 +15,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.tarigan.mazmursubs2.R;
-import com.tarigan.mazmursubs2.model.TvShow;
-import com.tarigan.mazmursubs2.adapter.main.ListTvShowAdapter;
+import com.tarigan.mazmursubs2.Model.TvShow;
+import com.tarigan.mazmursubs2.View.Activity.DetailTvShow;
+import com.tarigan.mazmursubs2.Adapter.ListTvShowAdapter;
 import com.tarigan.mazmursubs2.data.main.TvShowDataEn;
 import com.tarigan.mazmursubs2.data.main.TvShowDataIndo;
-import com.tarigan.mazmursubs2.activity.DetailTvShow;
 
 import java.util.ArrayList;
 import java.util.Locale;

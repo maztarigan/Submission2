@@ -1,4 +1,4 @@
-package com.tarigan.mazmursubs2.adapter.main;
+package com.tarigan.mazmursubs2.Adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,13 +11,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
-import com.tarigan.mazmursubs2.model.Movie;
+import com.tarigan.mazmursubs2.Model.Movie;
 import com.tarigan.mazmursubs2.R;
 
 import java.util.ArrayList;
 
 public class ListMovieAdapter extends RecyclerView.Adapter<ListMovieAdapter.ListViewHolder> {
-    private ArrayList<Movie> listMovie;
+    private ArrayList<Movie> listMovie = new ArrayList<>();
     private OnItemClickCallback onItemClickCallback;
 
     public void setOnItemClickCallback(OnItemClickCallback onItemClickCallback) {
@@ -27,6 +27,22 @@ public class ListMovieAdapter extends RecyclerView.Adapter<ListMovieAdapter.List
     public ListMovieAdapter(ArrayList<Movie> list){
         this.listMovie = list;
     }
+
+    public void setData(ArrayList<Movie> items){
+        listMovie.clear();
+        listMovie.addAll(items);
+        notifyDataSetChanged();
+    }
+
+    public void addItem(final Movie item){
+        listMovie.add(item);
+        notifyDataSetChanged();
+    }
+
+    public void clearData(){
+        listMovie.clear();
+    }
+
 
     @NonNull
     @Override

@@ -1,4 +1,4 @@
-package com.tarigan.mazmursubs2.activity;
+package com.tarigan.mazmursubs2.View.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.tarigan.mazmursubs2.R;
-import com.tarigan.mazmursubs2.model.TvShow;
+import com.tarigan.mazmursubs2.Model.TvShow;
 
 public class DetailTvShow extends AppCompatActivity {
     public static final String EXTRA_TVSHOW = "extra_tvshow";

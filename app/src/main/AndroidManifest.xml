@@ -9,9 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.DetailTvShow"></activity>
-        <activity android:name=".activity.DetailMovie" />
-        <activity android:name=".activity.MainActivity">
+        <activity android:name=".View.Activity.DetailTvShow"></activity>
+        <activity android:name=".View.Activity.DetailMovie" />
+        <activity android:name=".View.Activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

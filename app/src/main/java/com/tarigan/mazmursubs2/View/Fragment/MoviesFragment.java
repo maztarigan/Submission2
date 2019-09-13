@@ -1,4 +1,4 @@
-package com.tarigan.mazmursubs2.fragment;
+package com.tarigan.mazmursubs2.View.Fragment;
 
 
 import android.content.Intent;
@@ -14,12 +14,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.tarigan.mazmursubs2.model.Movie;
+import com.tarigan.mazmursubs2.Model.Movie;
 import com.tarigan.mazmursubs2.R;
-import com.tarigan.mazmursubs2.adapter.main.ListMovieAdapter;
+import com.tarigan.mazmursubs2.View.Activity.DetailMovie;
+import com.tarigan.mazmursubs2.Adapter.ListMovieAdapter;
 import com.tarigan.mazmursubs2.data.main.MoviesDataEn;
 import com.tarigan.mazmursubs2.data.main.MoviesDataIndo;
-import com.tarigan.mazmursubs2.activity.DetailMovie;
 
 import java.util.ArrayList;
 import java.util.Locale;

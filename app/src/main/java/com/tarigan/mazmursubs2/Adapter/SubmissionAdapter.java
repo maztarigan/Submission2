@@ -1,4 +1,4 @@
-package com.tarigan.mazmursubs2.adapter.main;
+package com.tarigan.mazmursubs2.Adapter;
 
 import android.content.Context;
 
@@ -7,8 +7,8 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
 import com.tarigan.mazmursubs2.R;
-import com.tarigan.mazmursubs2.fragment.MoviesFragment;
-import com.tarigan.mazmursubs2.fragment.TvShowsFragment;
+import com.tarigan.mazmursubs2.View.Fragment.MoviesFragment;
+import com.tarigan.mazmursubs2.View.Fragment.TvShowsFragment;
 
 public class SubmissionAdapter extends FragmentStatePagerAdapter {
 
