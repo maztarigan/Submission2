@@ -79,7 +79,7 @@ public class TvShowsFragment extends Fragment implements LoaderManager.LoaderCal
     @NonNull
     @Override
     public Loader<ArrayList<TvShow>> onCreateLoader(int id, @Nullable Bundle args) {
-        return new TvShowAsyncTaskLoader();
+        return new TvShowAsyncTaskLoader(getContext());
     }
 
     @Override

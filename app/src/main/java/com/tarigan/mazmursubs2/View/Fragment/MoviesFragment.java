@@ -23,6 +23,7 @@ import com.tarigan.mazmursubs2.Presenter.MovieAsyncTaskLoader;
 import com.tarigan.mazmursubs2.R;
 import com.tarigan.mazmursubs2.View.Activity.DetailMovie;
 import com.tarigan.mazmursubs2.Adapter.ListMovieAdapter;
+import com.tarigan.mazmursubs2.View.Activity.MainActivity;
 
 import java.util.ArrayList;
 
@@ -80,7 +81,7 @@ public class MoviesFragment extends Fragment implements LoaderManager.LoaderCall
     @NonNull
     @Override
     public Loader<ArrayList<Movie>> onCreateLoader(int id, @Nullable Bundle args) {
-        return new MovieAsyncTaskLoader();
+        return new MovieAsyncTaskLoader(getContext());
     }
 
     @Override
