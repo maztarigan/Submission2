@@ -1,36 +1,38 @@
 package com.tarigan.mazmursubs2.View.Fragment;
 
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.loader.app.LoaderManager;
+import androidx.loader.content.Loader;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.tarigan.mazmursubs2.Model.Movie;
+import com.tarigan.mazmursubs2.Presenter.MovieAsyncTaskLoader;
 import com.tarigan.mazmursubs2.R;
 import com.tarigan.mazmursubs2.View.Activity.DetailMovie;
 import com.tarigan.mazmursubs2.Adapter.ListMovieAdapter;
-import com.tarigan.mazmursubs2.data.main.MoviesDataEn;
-import com.tarigan.mazmursubs2.data.main.MoviesDataIndo;
 
 import java.util.ArrayList;
-import java.util.Locale;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class MoviesFragment extends Fragment {
+public class MoviesFragment extends Fragment implements LoaderManager.LoaderCallbacks<ArrayList<Movie>> {
     private RecyclerView rvMovies;
-    private ArrayList<Movie> list = new ArrayList<>();
+    private ListMovieAdapter adapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -43,24 +45,21 @@ public class MoviesFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState){
         super.onViewCreated(view, savedInstanceState);
 
+
+        adapter = new ListMovieAdapter();
+        adapter.notifyDataSetChanged();
+
         rvMovies = view.findViewById(R.id.rv_movies);
         rvMovies.setHasFixedSize(true);
         rvMovies.setLayoutManager(new LinearLayoutManager(getContext()));
-
-        String Language = Locale.getDefault().getLanguage();
-        switch (Language){
-            case "in":
-                list.addAll(MoviesDataIndo.getListData());
-            case "en":
-                list.addAll(MoviesDataEn.getListData());
-        }
-        list.addAll(MoviesDataEn.getListData());
         showRecyclerList();
 
+        Bundle bundle = new Bundle();
+        getLoaderManager().initLoader(0, bundle, this);
     }
 
     private void showRecyclerList() {
-        ListMovieAdapter listMovieAdapter = new ListMovieAdapter(list);
+        ListMovieAdapter listMovieAdapter = new ListMovieAdapter();
         rvMovies.setAdapter(listMovieAdapter);
 
         listMovieAdapter.setOnItemClickCallback(new ListMovieAdapter.OnItemClickCallback() {
@@ -73,9 +72,24 @@ public class MoviesFragment extends Fragment {
 
     private void showSelectedMovie(Movie data) {
         Intent DetailMovieIntent = new Intent(getContext(), DetailMovie.class);
-        DetailMovieIntent.putExtra(DetailMovie.EXTRA_MOVIE, data);
+        DetailMovieIntent.putExtra(DetailMovie.EXTRA_MOVIE, (Parcelable) data);
         startActivity(DetailMovieIntent);
     }
 
 
+    @NonNull
+    @Override
+    public Loader<ArrayList<Movie>> onCreateLoader(int id, @Nullable Bundle args) {
+        return new MovieAsyncTaskLoader();
+    }
+
+    @Override
+    public void onLoadFinished(@NonNull Loader<ArrayList<Movie>> loader, ArrayList<Movie> data) {
+        adapter.setData(data);
+    }
+
+    @Override
+    public void onLoaderReset(@NonNull Loader<ArrayList<Movie>> loader) {
+        adapter.setData(null);
+    }
 }

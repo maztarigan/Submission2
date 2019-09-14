@@ -20,12 +20,27 @@ public class ListTvShowAdapter extends RecyclerView.Adapter<ListTvShowAdapter.Li
     private ArrayList<TvShow> listTvShow;
     private ListTvShowAdapter.OnItemClickCallback onItemClickCallback;
 
+    public ListTvShowAdapter() {
+
+    }
+
     public void setOnItemClickCallback(ListTvShowAdapter.OnItemClickCallback onItemClickCallback) {
         this.onItemClickCallback = onItemClickCallback;
     }
 
-    public ListTvShowAdapter(ArrayList<TvShow> list){
-        this.listTvShow = list;
+    public void setData(ArrayList<TvShow> items){
+        listTvShow.clear();
+        listTvShow.addAll(items);
+        notifyDataSetChanged();
+    }
+
+    public void addItem(final TvShow item){
+        listTvShow.add(item);
+        notifyDataSetChanged();
+    }
+
+    public void clearData(){
+        listTvShow.clear();
     }
 
     @NonNull

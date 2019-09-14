@@ -18,7 +18,7 @@ public class TvShow {
             String name = object.getString("title");
             String desc = object.getString("overview");
             this.id = id;
-            this.photo = photo;
+            this.photo = "https://image.tmdb.org/t/p/w185"+photo;
             this.name = name;
             this.desc = desc;
         } catch (Exception e){
