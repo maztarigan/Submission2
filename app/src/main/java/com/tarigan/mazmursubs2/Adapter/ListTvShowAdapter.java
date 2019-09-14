@@ -17,7 +17,7 @@ import com.tarigan.mazmursubs2.Model.TvShow;
 import java.util.ArrayList;
 
 public class ListTvShowAdapter extends RecyclerView.Adapter<ListTvShowAdapter.ListViewHolder> {
-    private ArrayList<TvShow> listTvShow;
+    private ArrayList<TvShow> listTvShow = new ArrayList<>();
     private ListTvShowAdapter.OnItemClickCallback onItemClickCallback;
 
     public ListTvShowAdapter() {
@@ -72,9 +72,7 @@ public class ListTvShowAdapter extends RecyclerView.Adapter<ListTvShowAdapter.Li
     }
 
     @Override
-    public int getItemCount() {
-        return listTvShow.size();
-    }
+    public int getItemCount() { return listTvShow.size();}
 
     public class ListViewHolder extends RecyclerView.ViewHolder {
         ImageView imgPhoto;

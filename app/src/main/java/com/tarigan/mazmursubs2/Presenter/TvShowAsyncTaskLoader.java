@@ -1,6 +1,7 @@
 package com.tarigan.mazmursubs2.Presenter;
 
 import android.content.Context;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 import androidx.loader.content.AsyncTaskLoader;
@@ -83,13 +84,13 @@ public class TvShowAsyncTaskLoader extends AsyncTaskLoader<ArrayList<TvShow>> {
                         tvShowses.add(tvShow);
                     }
                 } catch (JSONException e) {
-                    e.printStackTrace();
+                    Log.d("Exception", e.getMessage());
                 }
             }
 
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                error.printStackTrace();
+                Log.d("onFailure", error.getMessage());
             }
         });
 

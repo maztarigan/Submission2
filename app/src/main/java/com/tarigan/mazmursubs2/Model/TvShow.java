@@ -15,7 +15,7 @@ public class TvShow {
         try{
             int id = object.getInt("id");
             String photo = object.getString("poster_path");
-            String name = object.getString("title");
+            String name = object.getString("name");
             String desc = object.getString("overview");
             this.id = id;
             this.photo = "https://image.tmdb.org/t/p/w185"+photo;
