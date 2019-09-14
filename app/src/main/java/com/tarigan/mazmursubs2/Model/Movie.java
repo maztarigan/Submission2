@@ -5,7 +5,7 @@ import android.os.Parcelable;
 
 import org.json.JSONObject;
 
-public class Movie implements Parcelable {
+public class Movie {
     private int id;
     private String photo;
     private String name;
@@ -61,36 +61,4 @@ public class Movie implements Parcelable {
     public Movie() {
     }
 
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeInt(this.id);
-        dest.writeString(this.photo);
-        dest.writeString(this.name);
-        dest.writeString(this.desc);
-    }
-
-    protected Movie(Parcel in) {
-        this.id = in.readInt();
-        this.photo = in.readString();
-        this.name = in.readString();
-        this.desc = in.readString();
-    }
-
-    public static final Creator<Movie> CREATOR = new Creator<Movie>() {
-        @Override
-        public Movie createFromParcel(Parcel source) {
-            return new Movie(source);
-        }
-
-        @Override
-        public Movie[] newArray(int size) {
-            return new Movie[size];
-        }
-    };
 }

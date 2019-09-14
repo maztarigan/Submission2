@@ -5,7 +5,7 @@ import android.os.Parcelable;
 
 import org.json.JSONObject;
 
-public class TvShow implements Parcelable {
+public class TvShow {
     private int id;
     private String photo;
     private String name;
@@ -62,35 +62,4 @@ public class TvShow implements Parcelable {
     public TvShow() {
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeInt(this.id);
-        dest.writeString(this.photo);
-        dest.writeString(this.name);
-        dest.writeString(this.desc);
-    }
-
-    protected TvShow(Parcel in) {
-        this.id = in.readInt();
-        this.photo = in.readString();
-        this.name = in.readString();
-        this.desc = in.readString();
-    }
-
-    public static final Creator<TvShow> CREATOR = new Creator<TvShow>() {
-        @Override
-        public TvShow createFromParcel(Parcel source) {
-            return new TvShow(source);
-        }
-
-        @Override
-        public TvShow[] newArray(int size) {
-            return new TvShow[size];
-        }
-    };
 }
