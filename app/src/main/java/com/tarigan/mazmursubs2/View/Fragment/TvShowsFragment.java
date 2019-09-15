@@ -56,7 +56,9 @@ public class TvShowsFragment extends Fragment implements LoaderManager.LoaderCal
         adapter.setOnItemClickCallback(new ListTvShowAdapter.OnItemClickCallback() {
             @Override
             public void onItemClicked(TvShow data) {
+                showLoading(true);
                 showSelectedTvShow(data);
+                showLoading(false);
             }
         });
 

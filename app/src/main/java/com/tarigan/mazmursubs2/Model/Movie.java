@@ -15,7 +15,7 @@ public class Movie implements Parcelable {
     public Movie(JSONObject object){
         try{
             int id = object.getInt("id");
-            String photo = "https://image.tmdb.org/t/p/w185"+object.getString("poster_path");
+            String photo = "https://image.tmdb.org/t/p/w92"+object.getString("poster_path");
             String name = object.getString("title");
             String desc = object.getString("overview");
             this.id = id;

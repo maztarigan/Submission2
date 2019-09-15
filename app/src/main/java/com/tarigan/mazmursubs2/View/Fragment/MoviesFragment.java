@@ -57,7 +57,9 @@ public class MoviesFragment extends Fragment implements LoaderManager.LoaderCall
         adapter.setOnItemClickCallback(new ListMovieAdapter.OnItemClickCallback() {
             @Override
             public void onItemClicked(Movie data) {
+                showLoading(true);
                 showSelectedMovie(data);
+                showLoading(false);
             }
         });
 

@@ -39,4 +39,5 @@ public class DetailMovie extends AppCompatActivity {
                     .into(tvPhoto);
         }
     }
+
 }
