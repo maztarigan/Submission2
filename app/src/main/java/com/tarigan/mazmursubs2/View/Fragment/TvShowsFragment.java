@@ -16,6 +16,7 @@ import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import com.tarigan.mazmursubs2.Presenter.TvShowAsyncTaskLoader;
 import com.tarigan.mazmursubs2.R;
@@ -32,6 +33,7 @@ import java.util.ArrayList;
 public class TvShowsFragment extends Fragment implements LoaderManager.LoaderCallbacks<ArrayList<TvShow>> {
     private RecyclerView rvTvShow;
     private ListTvShowAdapter adapter;
+    private ProgressBar progressBar;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -58,6 +60,8 @@ public class TvShowsFragment extends Fragment implements LoaderManager.LoaderCal
             }
         });
 
+        progressBar = view.findViewById(R.id.progressBar);
+
         Bundle bundle = new Bundle();
         getLoaderManager().initLoader(0, bundle, this);
 
@@ -72,12 +76,22 @@ public class TvShowsFragment extends Fragment implements LoaderManager.LoaderCal
     @NonNull
     @Override
     public Loader<ArrayList<TvShow>> onCreateLoader(int id, @Nullable Bundle args) {
+        showLoading(true);
         return new TvShowAsyncTaskLoader(getContext());
     }
 
     @Override
     public void onLoadFinished(@NonNull Loader<ArrayList<TvShow>> loader, ArrayList<TvShow> data) {
+        showLoading(false);
         adapter.setData(data);
+    }
+
+    private void showLoading(boolean state) {
+        if(state){
+            progressBar.setVisibility(View.VISIBLE);
+        } else {
+            progressBar.setVisibility(View.GONE);
+        }
     }
 
     @Override

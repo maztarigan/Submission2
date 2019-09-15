@@ -16,6 +16,7 @@ import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import com.tarigan.mazmursubs2.Model.Movie;
 import com.tarigan.mazmursubs2.Presenter.MovieAsyncTaskLoader;
@@ -32,6 +33,7 @@ import java.util.ArrayList;
 public class MoviesFragment extends Fragment implements LoaderManager.LoaderCallbacks<ArrayList<Movie>> {
     private RecyclerView rvMovies;
     private ListMovieAdapter adapter;
+    private ProgressBar progressBar;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -59,8 +61,19 @@ public class MoviesFragment extends Fragment implements LoaderManager.LoaderCall
             }
         });
 
+        progressBar = view.findViewById(R.id.progressBar);
+
+
         Bundle bundle = new Bundle();
         getLoaderManager().initLoader(0, bundle, this);
+    }
+
+    private void showLoading(boolean state) {
+        if(state){
+            progressBar.setVisibility(View.VISIBLE);
+        } else {
+            progressBar.setVisibility(View.GONE);
+        }
     }
 
     private void showSelectedMovie(Movie data) {
@@ -73,11 +86,13 @@ public class MoviesFragment extends Fragment implements LoaderManager.LoaderCall
     @NonNull
     @Override
     public Loader<ArrayList<Movie>> onCreateLoader(int id, @Nullable Bundle args) {
+        showLoading(true);
         return new MovieAsyncTaskLoader(getContext());
     }
 
     @Override
     public void onLoadFinished(@NonNull Loader<ArrayList<Movie>> loader, ArrayList<Movie> data) {
+        showLoading(false);
         adapter.setData(data);
     }
 
