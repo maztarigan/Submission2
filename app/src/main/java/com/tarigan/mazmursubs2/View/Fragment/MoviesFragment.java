@@ -1,7 +1,6 @@
 package com.tarigan.mazmursubs2.View.Fragment;
 
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -23,7 +22,6 @@ import com.tarigan.mazmursubs2.Presenter.MovieAsyncTaskLoader;
 import com.tarigan.mazmursubs2.R;
 import com.tarigan.mazmursubs2.View.Activity.DetailMovie;
 import com.tarigan.mazmursubs2.Adapter.ListMovieAdapter;
-import com.tarigan.mazmursubs2.View.Activity.MainActivity;
 
 import java.util.ArrayList;
 
@@ -53,22 +51,16 @@ public class MoviesFragment extends Fragment implements LoaderManager.LoaderCall
         rvMovies = view.findViewById(R.id.rv_movies);
         rvMovies.setHasFixedSize(true);
         rvMovies.setLayoutManager(new LinearLayoutManager(getContext()));
-        showRecyclerList();
-
-        Bundle bundle = new Bundle();
-        getLoaderManager().initLoader(0, bundle, this);
-    }
-
-    private void showRecyclerList() {
-        ListMovieAdapter listMovieAdapter = new ListMovieAdapter();
-        rvMovies.setAdapter(listMovieAdapter);
-
-        listMovieAdapter.setOnItemClickCallback(new ListMovieAdapter.OnItemClickCallback() {
+        rvMovies.setAdapter(adapter);
+        adapter.setOnItemClickCallback(new ListMovieAdapter.OnItemClickCallback() {
             @Override
             public void onItemClicked(Movie data) {
                 showSelectedMovie(data);
             }
         });
+
+        Bundle bundle = new Bundle();
+        getLoaderManager().initLoader(0, bundle, this);
     }
 
     private void showSelectedMovie(Movie data) {

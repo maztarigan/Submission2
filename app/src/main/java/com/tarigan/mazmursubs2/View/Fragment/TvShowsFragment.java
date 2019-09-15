@@ -50,24 +50,17 @@ public class TvShowsFragment extends Fragment implements LoaderManager.LoaderCal
         rvTvShow = view.findViewById(R.id.rv_tvshow);
         rvTvShow.setHasFixedSize(true);
         rvTvShow.setLayoutManager(new LinearLayoutManager(getContext()));
-
-        showRecyclerList();
-
-        Bundle bundle = new Bundle();
-        getLoaderManager().initLoader(0, bundle, this);
-
-    }
-
-    private void showRecyclerList() {
-        ListTvShowAdapter listTvShowAdapter = new ListTvShowAdapter();
-        rvTvShow.setAdapter(listTvShowAdapter);
-
-        listTvShowAdapter.setOnItemClickCallback(new ListTvShowAdapter.OnItemClickCallback() {
+        rvTvShow.setAdapter(adapter);
+        adapter.setOnItemClickCallback(new ListTvShowAdapter.OnItemClickCallback() {
             @Override
             public void onItemClicked(TvShow data) {
                 showSelectedTvShow(data);
             }
         });
+
+        Bundle bundle = new Bundle();
+        getLoaderManager().initLoader(0, bundle, this);
+
     }
 
     private void showSelectedTvShow(TvShow data) {

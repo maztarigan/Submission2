@@ -9,7 +9,6 @@ import androidx.loader.content.AsyncTaskLoader;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.SyncHttpClient;
 import com.tarigan.mazmursubs2.Model.TvShow;
-import com.tarigan.mazmursubs2.View.Fragment.TvShowsFragment;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -20,7 +19,7 @@ import java.util.ArrayList;
 import cz.msebera.android.httpclient.Header;
 
 public class TvShowAsyncTaskLoader extends AsyncTaskLoader<ArrayList<TvShow>> {
-    private ArrayList<TvShow> tvShows;
+    private ArrayList<TvShow> mData;
     private boolean mHasResult = false;
 
     public TvShowAsyncTaskLoader(final Context context) {
@@ -34,12 +33,12 @@ public class TvShowAsyncTaskLoader extends AsyncTaskLoader<ArrayList<TvShow>> {
         if(takeContentChanged())
             forceLoad();
         else if(mHasResult)
-            deliverResult(tvShows);
+            deliverResult(mData);
     }
 
     @Override
     public void deliverResult(final ArrayList<TvShow> data){
-        tvShows = data;
+        mData = data;
         mHasResult = true;
         super.deliverResult(data);
     }
@@ -49,7 +48,7 @@ public class TvShowAsyncTaskLoader extends AsyncTaskLoader<ArrayList<TvShow>> {
         super.onReset();
         onStopLoading();
         if(mHasResult){
-            tvShows = null;
+            mData = null;
             mHasResult = false;
         }
     }

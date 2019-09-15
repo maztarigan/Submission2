@@ -12,6 +12,7 @@ import com.tarigan.mazmursubs2.R;
 import com.tarigan.mazmursubs2.View.Fragment.MainFragment;
 
 public class MainActivity extends AppCompatActivity {
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
                     .replace(R.id.container, MainFragment.newInstance(this))
                     .commitNow();
         }
+
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {

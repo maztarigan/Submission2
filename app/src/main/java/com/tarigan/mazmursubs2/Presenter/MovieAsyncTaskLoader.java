@@ -9,7 +9,6 @@ import androidx.loader.content.AsyncTaskLoader;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.SyncHttpClient;
 import com.tarigan.mazmursubs2.Model.Movie;
-import com.tarigan.mazmursubs2.View.Fragment.MoviesFragment;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -20,11 +19,13 @@ import java.util.ArrayList;
 import cz.msebera.android.httpclient.Header;
 
 public class MovieAsyncTaskLoader extends AsyncTaskLoader<ArrayList<Movie>> {
-    private  ArrayList<Movie> movies;
+    private  ArrayList<Movie> mData;
     private boolean mHasResult = false;
 
     public MovieAsyncTaskLoader(final Context context) {
         super(context);
+
+        onContentChanged();
     }
 
     @Override
@@ -32,12 +33,12 @@ public class MovieAsyncTaskLoader extends AsyncTaskLoader<ArrayList<Movie>> {
         if (takeContentChanged())
             forceLoad();
         else if (mHasResult)
-            deliverResult(movies);
+            deliverResult(mData);
     }
 
     @Override
     public void deliverResult(final ArrayList<Movie> data){
-        movies = data;
+        mData = data;
         mHasResult = true;
         super.deliverResult(data);
     }
@@ -47,7 +48,7 @@ public class MovieAsyncTaskLoader extends AsyncTaskLoader<ArrayList<Movie>> {
         super.onReset();
         onStopLoading();
         if(mHasResult){
-            movies = null;
+            mData = null;
             mHasResult = false;
         }
     }
