@@ -8,6 +8,7 @@ import androidx.loader.content.AsyncTaskLoader;
 
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.SyncHttpClient;
+import com.tarigan.mazmursubs2.BuildConfig;
 import com.tarigan.mazmursubs2.Model.Movie;
 
 import org.json.JSONArray;
@@ -53,7 +54,7 @@ public class MovieAsyncTaskLoader extends AsyncTaskLoader<ArrayList<Movie>> {
         }
     }
 
-    private static final String API_KEY = "f20832746bd2b06d14d34288708de920";
+    private static final String API_KEY = BuildConfig.API_KEY;
 
 
     @Nullable

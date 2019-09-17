@@ -12,6 +12,7 @@
     tools:context=".View.Activity.DetailTvShow">
 
     <ImageView
+        android:contentDescription="@+id/img_photo"
         android:id="@+id/img_photo"
         android:layout_width="178dp"
         android:layout_height="240dp"
@@ -34,7 +35,7 @@
         android:lines="2"
         android:maxLines="2"
         android:text="@string/tvshow_name"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
