@@ -12,4 +12,5 @@
     <string name="lorem">lorem ipsum default template</string>
     <string name="overview">Overview</string>
     <string name="change_language_settings">Change Language</string>
+    <string name="title_favorite">Favorite</string>
 </resources>
