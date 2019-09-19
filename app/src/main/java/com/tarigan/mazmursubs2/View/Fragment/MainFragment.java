@@ -50,8 +50,8 @@ public class MainFragment extends Fragment {
         TabLayout tabLayout = view.findViewById(R.id.tab_layout);
         tabLayout.setupWithViewPager(viewPager);
 
-        BottomNavigationView navigation = (BottomNavigationView) view.findViewById(R.id.navigation_favorite);
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+//        BottomNavigationView navigation = (BottomNavigationView) view.findViewById(R.id.navigation_favorite);
+//        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
     }
 
@@ -61,9 +61,9 @@ public class MainFragment extends Fragment {
         public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
             switch (menuItem.getItemId()){
                 case R.id.navigation_favorite:
-//                    menuItem.setIcon(getResources().getDrawable(R.drawable.ic_favorite_red_24dp));
-                    Intent intent = new Intent(context, DetailMovie.class);
-                    startActivity(intent);
+                    menuItem.setIcon(getResources().getDrawable(R.drawable.ic_favorite_red_24dp));
+//                    Intent intent = new Intent(context, DetailMovie.class);
+//                    startActivity(intent);
                     return true;
             }
             return false;
