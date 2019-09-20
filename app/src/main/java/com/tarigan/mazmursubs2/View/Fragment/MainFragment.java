@@ -7,7 +7,6 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.view.menu.MenuView;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
@@ -20,7 +19,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.tabs.TabLayout;
 import com.tarigan.mazmursubs2.R;
 import com.tarigan.mazmursubs2.Adapter.SubmissionAdapter;
-import com.tarigan.mazmursubs2.View.Activity.DetailMovie;
 
 public class MainFragment extends Fragment {
     private SubmissionAdapter submissionAdapter;
@@ -50,8 +48,8 @@ public class MainFragment extends Fragment {
         TabLayout tabLayout = view.findViewById(R.id.tab_layout);
         tabLayout.setupWithViewPager(viewPager);
 
-//        BottomNavigationView navigation = (BottomNavigationView) view.findViewById(R.id.navigation_favorite);
-//        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        BottomNavigationView navigation = (BottomNavigationView) view.findViewById(R.id.navigation);
+        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
     }
 
@@ -64,6 +62,8 @@ public class MainFragment extends Fragment {
                     menuItem.setIcon(getResources().getDrawable(R.drawable.ic_favorite_red_24dp));
 //                    Intent intent = new Intent(context, DetailMovie.class);
 //                    startActivity(intent);
+                    return true;
+                case R.id.navigation_all:
                     return true;
             }
             return false;

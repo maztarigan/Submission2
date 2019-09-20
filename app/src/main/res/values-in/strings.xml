@@ -12,5 +12,6 @@
     <string name="lorem">Template Keterangan</string>
     <string name="overview">Tinjauan</string>
     <string name="change_language_settings">Ubah Bahasa</string>
+    <string name="title_all">Semua</string>
     <string name="title_favorite">Favorit</string>
 </resources>
