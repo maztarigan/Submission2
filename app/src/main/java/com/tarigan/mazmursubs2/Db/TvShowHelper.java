@@ -79,6 +79,21 @@ public class TvShowHelper {
         return arrayList;
     }
 
+    public long searchTvShow(String name){
+        int total;
+        Cursor cursor = database.query(DATABASE_TABLE, null,
+                "NAME = '"+name+"'",
+                null,
+                null,
+                null,
+                null,
+                null
+        );
+        total = cursor.getCount();
+        cursor.close();
+        return total;
+    }
+
     public long insertTvShow(TvShow tvShow){
         ContentValues args = new ContentValues();
         args.put(_ID, tvShow.getId());
@@ -97,8 +112,8 @@ public class TvShowHelper {
         return database.update(DATABASE_TABLE, args, _ID + "= '"+ tvShow.getId()+ "'",null);
     }
 
-    public int deleteTvShow(int id){
-        return database.delete(TABLE_TVSHOWS, _ID + " = '"+id+"'",null);
+    public int deleteTvShow(String name){
+        return database.delete(TABLE_TVSHOWS, NAME + " = '"+name+"'",null);
     }
 
 }

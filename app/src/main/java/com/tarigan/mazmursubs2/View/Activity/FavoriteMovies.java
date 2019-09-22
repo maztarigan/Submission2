@@ -1,6 +1,7 @@
 package com.tarigan.mazmursubs2.View.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.AsyncTask;
@@ -17,7 +18,7 @@ import com.tarigan.mazmursubs2.R;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 
-public abstract class FavoriteMovies extends AppCompatActivity implements LoadMoviesCallback{
+public class FavoriteMovies extends AppCompatActivity implements LoadMoviesCallback{
     private RecyclerView rvMovies;
     private ProgressBar progressBar;
     private static final String EXTRA_STATE = "EXTRA_STATE";
@@ -33,8 +34,14 @@ public abstract class FavoriteMovies extends AppCompatActivity implements LoadMo
         if (getSupportActionBar() != null)
             getSupportActionBar().setTitle(R.string.title_favorite_movie);
 
+        rvMovies = findViewById(R.id.rv_movies);
+        rvMovies.setLayoutManager(new LinearLayoutManager(this));
+        rvMovies.setHasFixedSize(true);
+
         movieHelper = MovieHelper.getINSTANCE(getApplicationContext());
         movieHelper.open();
+
+
 
         progressBar = findViewById(R.id.progressBar);
 

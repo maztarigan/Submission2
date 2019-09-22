@@ -60,7 +60,6 @@ public class MainFragment extends Fragment {
         public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
             switch (menuItem.getItemId()){
                 case R.id.navigation_movie:
-//                    menuItem.setIcon(getResources().getDrawable(R.drawable.ic_favorite_border_black_24dp));
                     Intent intent = new Intent(context, FavoriteMovies.class);
                     startActivity(intent);
                     return true;

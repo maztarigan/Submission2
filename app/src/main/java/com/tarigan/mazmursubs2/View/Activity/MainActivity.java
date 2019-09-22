@@ -9,11 +9,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.tarigan.mazmursubs2.Db.MovieHelper;
+import com.tarigan.mazmursubs2.Db.TvShowHelper;
 import com.tarigan.mazmursubs2.R;
 import com.tarigan.mazmursubs2.View.Fragment.MainFragment;
 
 public class MainActivity extends AppCompatActivity {
     MovieHelper movieHelper;
+    TvShowHelper tvShowHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +29,9 @@ public class MainActivity extends AppCompatActivity {
 
         movieHelper = MovieHelper.getINSTANCE(getApplicationContext());
         movieHelper.open();
+
+        tvShowHelper = TvShowHelper.getINSTANCE(getApplicationContext());
+        tvShowHelper.open();
 
     }
 

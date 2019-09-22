@@ -15,7 +15,6 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.tarigan.mazmursubs2.Model.Movie;
 import com.tarigan.mazmursubs2.R;
-import com.tarigan.mazmursubs2.View.Activity.MovieOnItemClickListener;
 
 import java.util.ArrayList;
 
@@ -33,7 +32,7 @@ public class FavoriteMovieAdapter extends RecyclerView.Adapter<FavoriteMovieAdap
     }
 
     @Override
-    public void onBindViewHolder(@NonNull FavoriteMovieAdapter.FavoriteMovieHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final FavoriteMovieAdapter.FavoriteMovieHolder holder, int position) {
         Movie movie = listMovie.get(position);
 
         Glide.with(holder.itemView.getContext())
@@ -43,13 +42,6 @@ public class FavoriteMovieAdapter extends RecyclerView.Adapter<FavoriteMovieAdap
 
         holder.tvName.setText(movie.getName());
         holder.tvDesc.setText(movie.getDesc());
-        holder.cvMovie.setOnClickListener(new MovieOnItemClickListener(position, new MovieOnItemClickListener.OnItemClickCallback(){
-
-            @Override
-            public void onItemClicked(View view, int position) {
-//                aksi jika card view di klik
-            }
-        }));
     }
 
     @Override

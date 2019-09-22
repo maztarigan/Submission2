@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -16,7 +15,6 @@ import com.tarigan.mazmursubs2.Db.MovieHelper;
 import com.tarigan.mazmursubs2.Model.Movie;
 import com.tarigan.mazmursubs2.R;
 
-import java.util.ArrayList;
 
 public class DetailMovie extends AppCompatActivity {
     public static final String EXTRA_MOVIE = "extra_movie";
@@ -25,7 +23,6 @@ public class DetailMovie extends AppCompatActivity {
 
 
     public static final String EXTRA_POSITION = "extra_position";
-    public static final int REQUEST_ADD = 100;
     public static final int RESULT_ADD = 101;
     public static final int RESULT_DELETE = 301;
 
