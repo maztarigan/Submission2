@@ -17,8 +17,6 @@ import com.tarigan.mazmursubs2.Model.Movie;
 import com.tarigan.mazmursubs2.R;
 import com.tarigan.mazmursubs2.View.Activity.MovieOnItemClickListener;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 
 public class FavoriteMovieAdapter extends RecyclerView.Adapter<FavoriteMovieAdapter.FavoriteMovieHolder> {
