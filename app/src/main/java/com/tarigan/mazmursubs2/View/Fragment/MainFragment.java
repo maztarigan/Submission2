@@ -1,6 +1,5 @@
 package com.tarigan.mazmursubs2.View.Fragment;
 
-import android.content.ClipData;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,6 +18,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.tabs.TabLayout;
 import com.tarigan.mazmursubs2.R;
 import com.tarigan.mazmursubs2.Adapter.SubmissionAdapter;
+import com.tarigan.mazmursubs2.View.Activity.FavoriteMovies;
+import com.tarigan.mazmursubs2.View.Activity.FavoriteTvShows;
 
 public class MainFragment extends Fragment {
     private SubmissionAdapter submissionAdapter;
@@ -58,12 +59,14 @@ public class MainFragment extends Fragment {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
             switch (menuItem.getItemId()){
-                case R.id.navigation_favorite:
-                    menuItem.setIcon(getResources().getDrawable(R.drawable.ic_favorite_red_24dp));
-//                    Intent intent = new Intent(context, DetailMovie.class);
-//                    startActivity(intent);
+                case R.id.navigation_movie:
+//                    menuItem.setIcon(getResources().getDrawable(R.drawable.ic_favorite_border_black_24dp));
+                    Intent intent = new Intent(context, FavoriteMovies.class);
+                    startActivity(intent);
                     return true;
-                case R.id.navigation_all:
+                case R.id.navigation_tv:
+                    Intent intent2 = new Intent(context, FavoriteTvShows.class);
+                    startActivity(intent2);
                     return true;
             }
             return false;

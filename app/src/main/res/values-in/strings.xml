@@ -14,4 +14,6 @@
     <string name="change_language_settings">Ubah Bahasa</string>
     <string name="title_all">Semua</string>
     <string name="title_favorite">Favorit</string>
+    <string name="title_favorite_movie">Film Favorit</string>
+    <string name="title_favorite_tvshow">Acara Tv Favorit</string>
 </resources>

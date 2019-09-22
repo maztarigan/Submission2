@@ -93,4 +93,5 @@ public class ListMovieAdapter extends RecyclerView.Adapter<ListMovieAdapter.List
     public interface OnItemClickCallback {
         void onItemClicked(Movie data);
     }
+
 }
