@@ -1,6 +1,7 @@
 package com.tarigan.mazmursubs2.View.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.loader.app.LoaderManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.AsyncTask;
@@ -76,9 +77,9 @@ public abstract class FavoriteMovies extends AppCompatActivity implements LoadMo
         private final WeakReference<MovieHelper> weakMovieHelper;
         private final WeakReference<LoadMoviesCallback> weakCallback;
 
-        public LoadMoviesAsync(WeakReference<MovieHelper> weakMovieHelper, WeakReference<LoadMoviesCallback> weakCallback) {
-            this.weakMovieHelper = weakMovieHelper;
-            this.weakCallback = weakCallback;
+        public LoadMoviesAsync(MovieHelper movieHelper, LoadMoviesCallback callback ) {
+            weakMovieHelper = new WeakReference<>(movieHelper);
+            weakCallback = new WeakReference<>(callback);
         }
 
         @Override
