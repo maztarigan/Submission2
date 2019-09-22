@@ -12,7 +12,6 @@ import com.tarigan.mazmursubs2.Adapter.FavoriteMovieAdapter;
 import com.tarigan.mazmursubs2.Db.MovieHelper;
 import com.tarigan.mazmursubs2.Model.LoadMoviesCallback;
 import com.tarigan.mazmursubs2.Model.Movie;
-import com.tarigan.mazmursubs2.Presenter.LoadMoviesAsync;
 import com.tarigan.mazmursubs2.R;
 
 import java.lang.ref.WeakReference;
@@ -71,6 +70,33 @@ public abstract class FavoriteMovies extends AppCompatActivity implements LoadMo
     public void postExecute(ArrayList<Movie> movies) {
         progressBar.setVisibility(View.INVISIBLE);
         adapter.setListMovie(movies);
+    }
+
+    private static class LoadMoviesAsync extends AsyncTask<Void, Void, ArrayList<Movie>> {
+        private final WeakReference<MovieHelper> weakMovieHelper;
+        private final WeakReference<LoadMoviesCallback> weakCallback;
+
+        public LoadMoviesAsync(WeakReference<MovieHelper> weakMovieHelper, WeakReference<LoadMoviesCallback> weakCallback) {
+            this.weakMovieHelper = weakMovieHelper;
+            this.weakCallback = weakCallback;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            weakCallback.get().preExecute();
+        }
+
+        @Override
+        protected ArrayList<Movie> doInBackground(Void... voids) {
+            return weakMovieHelper.get().getAllMovies();
+        }
+
+        @Override
+        protected void onPostExecute(ArrayList<Movie> movies) {
+            super.onPostExecute(movies);
+            weakCallback.get().postExecute(movies);
+        }
     }
 
 }
