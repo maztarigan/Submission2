@@ -16,10 +16,14 @@ import com.tarigan.mazmursubs2.Db.MovieHelper;
 import com.tarigan.mazmursubs2.Model.Movie;
 import com.tarigan.mazmursubs2.R;
 
+import java.util.ArrayList;
+
 public class DetailMovie extends AppCompatActivity {
     public static final String EXTRA_MOVIE = "extra_movie";
     private TextView tvName, tvDescription;
     private ImageButton imageButton;
+    private ArrayList<Movie> searchlist = new ArrayList<>();
+
 
     public static final String EXTRA_POSITION = "extra_position";
     public static final int REQUEST_ADD = 100;
@@ -45,14 +49,14 @@ public class DetailMovie extends AppCompatActivity {
 
         movieHelper = MovieHelper.getINSTANCE(getApplicationContext());
 
-//        final MovieHelper movieHelper = new MovieHelper(this);
+
+        imageButton = (ImageButton)findViewById(R.id.btn_favorite);
 
         final Movie movie = getIntent().getParcelableExtra(EXTRA_MOVIE);
-        final int ID = movie.getId();
-        final String name = movie.getName();
-        final String description = movie.getDesc();
-        final String photo = movie.getPhoto();
         if (movie != null) {
+            String name = movie.getName();
+            String description = movie.getDesc();
+            String photo = movie.getPhoto();
             tvName.setText(name);
             tvDescription.setText(description);
             Glide.with(this)
@@ -63,8 +67,14 @@ public class DetailMovie extends AppCompatActivity {
         }
 
 
+        searchlist = movieHelper.searchMovie(movie.getId());
+        if (searchlist.isEmpty()){
+            imageButton.setImageResource(R.drawable.ic_favorite_border_black_24dp);
+        }else {
+            imageButton.setImageResource(R.drawable.ic_favorite_red_24dp);
+        }
 
-        imageButton = (ImageButton)findViewById(R.id.btn_favorite);
+
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -80,7 +90,7 @@ public class DetailMovie extends AppCompatActivity {
                 intent.putExtra(EXTRA_POSITION, position);
 
 
-                imageButton.setImageResource(R.drawable.ic_favorite_red_24dp);
+
                 long result = movieHelper.insertMovie(movies);
 
                 if(result > 0 ){

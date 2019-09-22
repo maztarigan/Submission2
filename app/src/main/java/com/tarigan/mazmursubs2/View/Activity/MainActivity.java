@@ -8,10 +8,12 @@ import android.provider.Settings;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.tarigan.mazmursubs2.Db.MovieHelper;
 import com.tarigan.mazmursubs2.R;
 import com.tarigan.mazmursubs2.View.Fragment.MainFragment;
 
 public class MainActivity extends AppCompatActivity {
+    MovieHelper movieHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +24,9 @@ public class MainActivity extends AppCompatActivity {
                     .replace(R.id.container, MainFragment.newInstance(this))
                     .commitNow();
         }
+
+        movieHelper = MovieHelper.getINSTANCE(getApplicationContext());
+        movieHelper.open();
 
     }
 
