@@ -1,4 +1,6 @@
-package com.tarigan.mazmursubs2.Model;
+package com.tarigan.mazmursubs2.View;
+
+import com.tarigan.mazmursubs2.Model.Movie;
 
 import java.util.ArrayList;
 

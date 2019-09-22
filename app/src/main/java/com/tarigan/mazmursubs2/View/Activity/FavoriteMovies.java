@@ -1,7 +1,6 @@
 package com.tarigan.mazmursubs2.View.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.loader.app.LoaderManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.AsyncTask;
@@ -11,7 +10,7 @@ import android.widget.ProgressBar;
 
 import com.tarigan.mazmursubs2.Adapter.FavoriteMovieAdapter;
 import com.tarigan.mazmursubs2.Db.MovieHelper;
-import com.tarigan.mazmursubs2.Model.LoadMoviesCallback;
+import com.tarigan.mazmursubs2.View.LoadMoviesCallback;
 import com.tarigan.mazmursubs2.Model.Movie;
 import com.tarigan.mazmursubs2.R;
 
@@ -35,6 +34,7 @@ public abstract class FavoriteMovies extends AppCompatActivity implements LoadMo
             getSupportActionBar().setTitle(R.string.title_favorite_movie);
 
         movieHelper = MovieHelper.getINSTANCE(getApplicationContext());
+        movieHelper.open();
 
         progressBar = findViewById(R.id.progressBar);
 
