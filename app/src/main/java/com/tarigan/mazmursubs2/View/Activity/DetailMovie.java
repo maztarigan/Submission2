@@ -22,7 +22,6 @@ public class DetailMovie extends AppCompatActivity {
     public static final String EXTRA_MOVIE = "extra_movie";
     private TextView tvName, tvDescription;
     private ImageButton imageButton;
-    private ArrayList<Movie> searchlist = new ArrayList<>();
 
 
     public static final String EXTRA_POSITION = "extra_position";
@@ -67,11 +66,11 @@ public class DetailMovie extends AppCompatActivity {
         }
 
 
-        searchlist = movieHelper.searchMovie(movie.getId());
-        if (searchlist.isEmpty()){
-            imageButton.setImageResource(R.drawable.ic_favorite_border_black_24dp);
-        }else {
+        final long searchlist = movieHelper.searchMovie(movie.getName());
+        if (searchlist > 0){
             imageButton.setImageResource(R.drawable.ic_favorite_red_24dp);
+        }else {
+            imageButton.setImageResource(R.drawable.ic_favorite_border_black_24dp);
         }
 
 
@@ -89,17 +88,30 @@ public class DetailMovie extends AppCompatActivity {
                 intent.putExtra(EXTRA_MOVIE, movie);
                 intent.putExtra(EXTRA_POSITION, position);
 
+                if (searchlist >0) {
+                    imageButton.setImageResource(R.drawable.ic_favorite_border_black_24dp);
+                    long result = movieHelper.deleteMovie(movies.getName());
 
+                    if(result > 0 ){
+                        movies.setId((int) result);
+                        setResult(RESULT_DELETE, intent);
+                    }else {
+                        Toast.makeText(DetailMovie.this, "Error",Toast.LENGTH_SHORT).show();
+                    }
 
-                long result = movieHelper.insertMovie(movies);
-
-                if(result > 0 ){
-                    movies.setId((int) result);
-                    setResult(RESULT_ADD, intent);
-                    finish();
                 }else {
-                    Toast.makeText(DetailMovie.this, "Error",Toast.LENGTH_SHORT).show();
+                    imageButton.setImageResource(R.drawable.ic_favorite_red_24dp);
+                    long result = movieHelper.insertMovie(movies);
+
+                    if(result > 0 ){
+                        movies.setId((int) result);
+                        setResult(RESULT_ADD, intent);
+                    }else {
+                        Toast.makeText(DetailMovie.this, "Error",Toast.LENGTH_SHORT).show();
+                    }
                 }
+
+
             }
         });
     }

@@ -77,28 +77,19 @@ public class MovieHelper {
         return arrayList;
     }
 
-    public ArrayList<Movie> searchMovie(int ID){
-        ArrayList<Movie> arrayList = new ArrayList<>();
+    public long searchMovie(String name){
+        int total;
         Cursor cursor = database.query(DATABASE_TABLE, null,
-                "_ID = '"+ID+"'",
+                "NAME = '"+name+"'",
                 null,
                 null,
                 null,
                 null,
                 null
         );
-
-        Movie movie = new Movie();
-
-        if (cursor.getCount() > 0){
-                movie.setId(cursor.getInt(cursor.getColumnIndexOrThrow(_ID)));
-                movie.setName(cursor.getString(cursor.getColumnIndexOrThrow(NAME)));
-                movie.setPhoto(cursor.getString(cursor.getColumnIndexOrThrow(PHOTO)));
-                movie.setDesc(cursor.getString(cursor.getColumnIndexOrThrow(DESC)));
-                arrayList.add(movie);
-        }
+        total = cursor.getCount();
         cursor.close();
-        return arrayList;
+        return total;
     }
 
     public long insertMovie(Movie movie){
@@ -117,7 +108,7 @@ public class MovieHelper {
         return database.update(DATABASE_TABLE, args, _ID +"= '"+movie.getId()+"'",null);
     }
 
-    public int deleteMovie (int id){
-        return database.delete(TABLE_MOVIE, _ID +" = '"+id+"'",null);
+    public int deleteMovie (String name){
+        return database.delete(TABLE_MOVIE, NAME +" = '"+name+"'",null);
     }
 }
