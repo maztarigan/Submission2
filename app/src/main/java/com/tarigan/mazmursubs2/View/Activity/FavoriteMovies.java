@@ -4,12 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ProgressBar;
 
 import com.tarigan.mazmursubs2.Adapter.FavoriteMovieAdapter;
+import com.tarigan.mazmursubs2.Adapter.ListMovieAdapter;
 import com.tarigan.mazmursubs2.Db.MovieHelper;
 import com.tarigan.mazmursubs2.View.LoadMoviesCallback;
 import com.tarigan.mazmursubs2.Model.Movie;
@@ -46,6 +48,15 @@ public class FavoriteMovies extends AppCompatActivity implements LoadMoviesCallb
         progressBar = findViewById(R.id.progressBar);
 
         adapter = new FavoriteMovieAdapter(this);
+        adapter.setOnItemClickCallback(new ListMovieAdapter.OnItemClickCallback() {
+            @Override
+            public void onItemClicked(Movie data) {
+                showLoading(true);
+                showSelectedMovie(data);
+                showLoading(false);
+            }
+        });
+
         rvMovies.setAdapter(adapter);
 
         if (savedInstanceState == null){
@@ -105,6 +116,19 @@ public class FavoriteMovies extends AppCompatActivity implements LoadMoviesCallb
             super.onPostExecute(movies);
             weakCallback.get().postExecute(movies);
         }
+    }
+
+    private void showLoading(boolean state) {
+        if(state){
+            progressBar.setVisibility(View.VISIBLE);
+        } else {
+            progressBar.setVisibility(View.GONE);
+        }
+    }
+    private void showSelectedMovie(Movie data) {
+        Intent DetailMovieIntent = new Intent(this, DetailMovie.class);
+        DetailMovieIntent.putExtra(DetailMovie.EXTRA_MOVIE, data);
+        startActivity(DetailMovieIntent);
     }
 
 }

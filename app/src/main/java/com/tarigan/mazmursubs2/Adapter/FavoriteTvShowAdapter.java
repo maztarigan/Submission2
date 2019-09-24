@@ -20,6 +20,7 @@ import java.util.ArrayList;
 
 public class FavoriteTvShowAdapter extends RecyclerView.Adapter<FavoriteTvShowAdapter.FavoriteTvShowHolder> {
     private ArrayList<TvShow> listTvShow = new ArrayList<>();
+    private ListTvShowAdapter.OnItemClickCallback onItemClickCallback;
     private Activity activity;
 
     @NonNull
@@ -30,7 +31,7 @@ public class FavoriteTvShowAdapter extends RecyclerView.Adapter<FavoriteTvShowAd
     }
 
     @Override
-    public void onBindViewHolder(@NonNull FavoriteTvShowHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final FavoriteTvShowHolder holder, int position) {
         TvShow tvShow = listTvShow.get(position);
 
         Glide.with(holder.itemView.getContext())
@@ -40,6 +41,17 @@ public class FavoriteTvShowAdapter extends RecyclerView.Adapter<FavoriteTvShowAd
 
         holder.tvName.setText(tvShow.getName());
         holder.tvDesc.setText(tvShow.getDesc());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onItemClickCallback.onItemClicked(listTvShow.get(holder.getAdapterPosition()));
+            }
+        });
+    }
+
+    public void setOnItemClickCallback(ListTvShowAdapter.OnItemClickCallback onItemClickCallback) {
+        this.onItemClickCallback = onItemClickCallback;
     }
 
     @Override

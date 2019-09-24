@@ -4,12 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ProgressBar;
 
 import com.tarigan.mazmursubs2.Adapter.FavoriteTvShowAdapter;
+import com.tarigan.mazmursubs2.Adapter.ListTvShowAdapter;
 import com.tarigan.mazmursubs2.Db.TvShowHelper;
 import com.tarigan.mazmursubs2.Model.TvShow;
 import com.tarigan.mazmursubs2.R;
@@ -47,6 +49,15 @@ public class FavoriteTvShows extends AppCompatActivity implements LoadTvShowCall
         progressBar = findViewById(R.id.progressBar);
 
         adapter = new FavoriteTvShowAdapter(this);
+        adapter.setOnItemClickCallback(new ListTvShowAdapter.OnItemClickCallback() {
+            @Override
+            public void onItemClicked(TvShow data) {
+                showLoading(true);
+                showSelectedTvShow(data);
+                showLoading(false);
+            }
+
+        });
         rvTvShow.setAdapter(adapter);
 
         if (savedInstanceState == null){
@@ -106,5 +117,18 @@ public class FavoriteTvShows extends AppCompatActivity implements LoadTvShowCall
             super.onPostExecute(tvShows);
             weakCallback.get().postExecute(tvShows);
         }
+    }
+
+    private void showLoading(boolean state) {
+        if(state){
+            progressBar.setVisibility(View.VISIBLE);
+        } else {
+            progressBar.setVisibility(View.GONE);
+        }
+    }
+    private void showSelectedTvShow(TvShow data) {
+        Intent DetailTvShowIntent = new Intent(this, DetailTvShow.class);
+        DetailTvShowIntent.putExtra(DetailTvShow.EXTRA_TVSHOW, data);
+        startActivity(DetailTvShowIntent);
     }
 }

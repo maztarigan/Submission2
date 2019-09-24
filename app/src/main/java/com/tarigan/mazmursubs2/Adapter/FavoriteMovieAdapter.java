@@ -20,6 +20,7 @@ import java.util.ArrayList;
 
 public class FavoriteMovieAdapter extends RecyclerView.Adapter<FavoriteMovieAdapter.FavoriteMovieHolder> {
     private ArrayList<Movie> listMovie = new ArrayList<>();
+    private ListMovieAdapter.OnItemClickCallback onItemClickCallback;
     private Activity activity;
 
 
@@ -42,11 +43,22 @@ public class FavoriteMovieAdapter extends RecyclerView.Adapter<FavoriteMovieAdap
 
         holder.tvName.setText(movie.getName());
         holder.tvDesc.setText(movie.getDesc());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onItemClickCallback.onItemClicked(listMovie.get(holder.getAdapterPosition()));
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
         return listMovie.size();
+    }
+
+    public void setOnItemClickCallback(ListMovieAdapter.OnItemClickCallback onItemClickCallback) {
+        this.onItemClickCallback = onItemClickCallback;
     }
 
     public class FavoriteMovieHolder extends RecyclerView.ViewHolder {
