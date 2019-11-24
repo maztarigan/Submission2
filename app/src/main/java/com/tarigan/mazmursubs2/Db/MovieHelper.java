@@ -77,10 +77,10 @@ public class MovieHelper {
         return arrayList;
     }
 
-    public long searchMovie(String name){
+    public long searchMovie(int id){
         int total;
         Cursor cursor = database.query(DATABASE_TABLE, null,
-                "NAME = '"+name+"'",
+                "_ID = '"+id+"'",
                 null,
                 null,
                 null,
@@ -108,7 +108,7 @@ public class MovieHelper {
         return database.update(DATABASE_TABLE, args, _ID +"= '"+movie.getId()+"'",null);
     }
 
-    public int deleteMovie (String name){
-        return database.delete(TABLE_MOVIE, NAME +" = '"+name+"'",null);
+    public int deleteMovie (int id){
+        return database.delete(TABLE_MOVIE, _ID+" = '"+id+"'",null);
     }
 }

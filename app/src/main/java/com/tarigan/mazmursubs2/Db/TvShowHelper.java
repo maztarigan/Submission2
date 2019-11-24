@@ -79,10 +79,10 @@ public class TvShowHelper {
         return arrayList;
     }
 
-    public long searchTvShow(String name){
+    public long searchTvShow(int id){
         int total;
         Cursor cursor = database.query(DATABASE_TABLE, null,
-                "NAME = '"+name+"'",
+                "_ID = '"+id+"'",
                 null,
                 null,
                 null,
@@ -112,8 +112,8 @@ public class TvShowHelper {
         return database.update(DATABASE_TABLE, args, _ID + "= '"+ tvShow.getId()+ "'",null);
     }
 
-    public int deleteTvShow(String name){
-        return database.delete(TABLE_TVSHOWS, NAME + " = '"+name+"'",null);
+    public int deleteTvShow(int id){
+        return database.delete(TABLE_TVSHOWS, _ID + " = '"+id+"'",null);
     }
 
 }

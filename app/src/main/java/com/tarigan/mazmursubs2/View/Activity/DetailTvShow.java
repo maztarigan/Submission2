@@ -57,7 +57,7 @@ public class DetailTvShow extends AppCompatActivity {
             position = getIntent().getIntExtra(EXTRA_POSITION, 0);
         }
 
-        final long searchlist = tvShowHelper.searchTvShow(tvShow.getName());
+        final long searchlist = tvShowHelper.searchTvShow(tvShow.getId());
         if (searchlist > 0){
             imageButton.setImageResource(R.drawable.ic_favorite_red_24dp);
         }else {
@@ -80,7 +80,7 @@ public class DetailTvShow extends AppCompatActivity {
 
                 if (searchlist >0) {
                     imageButton.setImageResource(R.drawable.ic_favorite_border_black_24dp);
-                    long result = tvShowHelper.deleteTvShow(tvShows.getName());
+                    long result = tvShowHelper.deleteTvShow(tvShows.getId());
 
                     if(result > 0 ){
                         tvShows.setId((int) result);

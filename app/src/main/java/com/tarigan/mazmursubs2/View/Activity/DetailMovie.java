@@ -63,7 +63,7 @@ public class DetailMovie extends AppCompatActivity {
         }
 
 
-        final long searchlist = movieHelper.searchMovie(movie.getName());
+        final long searchlist = movieHelper.searchMovie(movie.getId());
         if (searchlist > 0){
             imageButton.setImageResource(R.drawable.ic_favorite_red_24dp);
         }else {
@@ -87,7 +87,7 @@ public class DetailMovie extends AppCompatActivity {
 
                 if (searchlist >0) {
                     imageButton.setImageResource(R.drawable.ic_favorite_border_black_24dp);
-                    long result = movieHelper.deleteMovie(movies.getName());
+                    long result = movieHelper.deleteMovie(movies.getId());
 
                     if(result > 0 ){
                         movies.setId((int) result);
